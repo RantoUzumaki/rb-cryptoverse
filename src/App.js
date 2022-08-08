@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import PageNotFound from "./common/PageNotFound";
+import Exchanges from "./components/Exchanges";
+import {
+  CryptoCuurencies,
+  HomePage,
+  News,
+  NavBar,
+  CryptoDetails,
+} from "./components/Index";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Router>
+        <NavBar />
+        <div className="BodyContainer">
+          <Routes>
+            <Route exact path="/" element={<HomePage />} />
+            <Route path="/coins" element={<CryptoCuurencies />} />
+            <Route path="/coins/:coinId" element={<CryptoDetails />} />
+            <Route path="/news" element={<News />} />
+            <Route path="/exchanges" element={<Exchanges />} />
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
+        </div>
+      </Router>
     </div>
   );
 }

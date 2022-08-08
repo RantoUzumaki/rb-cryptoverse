@@ -1,0 +1,228 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
+
+:root {
+  --green: #2ecb72;
+  --black: #001920;
+  --grey: #c5c8c8;
+  --white: #ffffff;
+}
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  background: var(--black);
+  width: 100vw;
+  color: var(--green);
+  overflow-x: hidden;
+}
+.BodyContainer {
+  width: 75vw;
+  margin: 20px auto 0;
+}
+
+/* nav bar */
+.navbar-main {
+  width: 75%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+}
+.navbar-main .navbar-logo {
+  width: 160px;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navbar-main .navbar-logo a {
+  width: 100%;
+  height: 100%;
+}
+.navbar-main .navbar-logo a img {
+  width: 100%;
+  height: 90%;
+  margin-top: 6%;
+}
+.navbar-main .navbar-menus {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.navbar-main .navbar-menus a {
+  text-decoration: none;
+  color: var(--green);
+  margin: 0;
+  padding: 8px 15px;
+  border: 1px solid var(--white);
+  border-radius: 8px;
+  font-weight: 500;
+  margin-left: 12px;
+  transition: 250ms all ease;
+}
+.navbar-main .navbar-menus a:hover,
+.navbar-main .navbar-menus a.active {
+  background-color: var(--white);
+  color: var(--black);
+  border: 1px solid var(--white);
+  box-shadow: 0 0 1px 2px var(--white);
+}
+
+/* carousel */
+.carousel_container {
+  width: 100%;
+}
+
+/* crypto */
+.crypto_currency_main {
+  margin: 40px 0;
+  position: relative;
+}
+.crypto_currency_header {
+  font-size: 24px;
+  font-weight: 700;
+}
+.crypto_currency_leads {
+  font-weight: 16px;
+  color: var(--green);
+  opacity: 0.7;
+  padding-bottom: 10px;
+}
+.crypto-search-container {
+  width: max-content;
+  height: 40px;
+  position: absolute;
+  right: 0;
+  top: 10px;
+  display: flex;
+}
+.crypto-search {
+	margin-left: 15px;
+  border-radius: 8px;
+  width: 250px;
+  height: 100%;
+  padding: 15px;
+  outline: 0;
+  font-size: 14px;
+  background: transparent;
+  color: var(--white);
+  border: 1px solid var(--white);
+  transition: all 450ms ease-in-out;
+}
+.crypto-search:focus {
+  background: var(--white);
+  border: 1px solid var(--green);
+  color: var(--black);
+}
+.crypto_card_container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 20px 20px;
+  margin-top: 10px;
+}
+.crypto_card {
+  height: max-content;
+  border-radius: 8px;
+  border: 1px solid var(--white);
+  background-color: var(--white);
+  opacity: 0.6;
+  position: relative;
+  transition: all 450ms ease-in-out;
+}
+.crypto_card:hover {
+  border: 1px solid var(--color);
+  opacity: 1;
+  box-shadow: 0 0 10px 5px var(--color);
+}
+.coin_image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+.coin_image img {
+  height: 150px;
+}
+.crypto_card_details {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: all 450ms ease-in-out;
+}
+.crypto_card:hover .crypto_card_details {
+  background: var(--color);
+  color: var(--white);
+  opacity: 0.8;
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* dropdown css */
+.dropdown {
+	width: 250px;
+	position: relative;
+}
+.dropdown_btn {
+	width: 100%;
+	height: 40px;
+	border: 1px solid var(--white);
+	border-radius: 10px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 12px;
+	cursor: pointer;
+	user-select: none;
+}
+.drop-active {
+	transform: rotate(180deg);
+	transition: all 400ms ease-in-out;
+}
+.drop-inactive {
+	transform: rotate(00deg);
+	transition: all 400ms ease-in-out;
+}
+.dropdown_content {
+	position: absolute;
+	width: 100%;
+	height: max-content;
+	background: var(--white);
+	z-index: 999;
+	top: 50px;
+	border-radius: 8px;
+	padding: 6px;
+}
+.dropdown_item {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	padding: 6px;
+	transition: all 250ms ease-in;
+	border-radius: 8px;
+	cursor: pointer;
+	user-select: none;
+}
+.dropdown_item:hover {
+	background-color: var(--green);
+	color: var(--black);
+}
