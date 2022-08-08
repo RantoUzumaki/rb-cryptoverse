@@ -4,10 +4,21 @@ import { BsFillCaretDownFill } from "react-icons/bs";
 const Dropdown = ({ select, setSelect }) => {
   const [isActive, setIsActive] = useState(false);
 
-  const dropdownOptions = ["1", "2", "3", "4"];
+  const dropdownOptions = [
+    "Default",
+    "Alphabatical A-Z",
+    "Alphabatical Z-A",
+    "Price L-H",
+    "Price H-L",
+  ];
+
   return (
-    <div className="dropdown">
-      <div className="dropdown_btn" onClick={() => setIsActive(!isActive)}>
+    <div
+      className="dropdown"
+      tabIndex={0}
+      onClick={() => setIsActive(!isActive)}
+    >
+      <div className="dropdown_btn">
         {select}
         <BsFillCaretDownFill
           className={isActive ? "drop-active" : "drop-inactive"}
@@ -19,10 +30,12 @@ const Dropdown = ({ select, setSelect }) => {
             <div
               key={options}
               onClick={(e) => {
-                setSelect(options)
-                setIsActive(false)
+                setSelect(options);
+                setIsActive(false);
               }}
-              className="dropdown_item"
+              className={
+                options === select ? "dropdown_item active" : "dropdown_item"
+              }
             >
               {options}
             </div>

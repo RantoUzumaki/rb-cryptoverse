@@ -24,6 +24,11 @@ body {
   width: 75vw;
   margin: 20px auto 0;
 }
+.d-flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 /* nav bar */
 .navbar-main {
@@ -55,7 +60,8 @@ body {
   justify-content: space-between;
   align-items: center;
 }
-.navbar-main .navbar-menus a {
+.navbar-main .navbar-menus a,
+.see_more_btn a {
   text-decoration: none;
   color: var(--green);
   margin: 0;
@@ -67,7 +73,8 @@ body {
   transition: 250ms all ease;
 }
 .navbar-main .navbar-menus a:hover,
-.navbar-main .navbar-menus a.active {
+.navbar-main .navbar-menus a.active,
+.see_more_btn a:hover {
   background-color: var(--white);
   color: var(--black);
   border: 1px solid var(--white);
@@ -170,7 +177,7 @@ body {
 .crypto_card:hover .crypto_card_details {
   background: var(--color);
   color: var(--white);
-  opacity: 0.8;
+  opacity: 1;
   font-size: 32px;
   font-weight: 700;
   text-align: center;
@@ -222,7 +229,15 @@ body {
 	cursor: pointer;
 	user-select: none;
 }
-.dropdown_item:hover {
+.dropdown_item:hover,
+.dropdown_item.active {
 	background-color: var(--green);
-	color: var(--black);
+	color: var(--white);
+}
+.dropdown_item.active::after {
+  content: "\2714";
+  position: absolute;
+  right: 15px;
+  font-size: 24px;
+  color: var(--white);
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import CarouselSlider from "../common/CarouselSlider";
 import {
   useGetCryptoDetailQuery,
@@ -31,8 +32,15 @@ const HomePage = () => {
       </div>
 
       <div className="crypto_currency_main">
-        <p className="crypto_currency_header">Crypto Currency</p>
-        <p className="crypto_currency_leads">Top 10 Currencies</p>
+        <div className="d-flex-between">
+          <div>
+            <p className="crypto_currency_header">Crypto Currency</p>
+            <p className="crypto_currency_leads">Top 10 Currencies</p>
+          </div>
+          <div className="see_more_btn">
+            <Link to="/coins">See More</Link>
+          </div>
+        </div>
         <CryptoCard simplified={true} />
       </div>
     </>

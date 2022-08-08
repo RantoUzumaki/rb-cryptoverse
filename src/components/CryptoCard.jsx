@@ -10,7 +10,7 @@ const CryptoCard = ({ simplified }) => {
   const { data: coins, isFetching } = useGetCryptoQuery(count);
   const [coinData, setCoinData] = useState([]);
   const [search, setSearch] = useState("");
-	const [selected, setSelected] = useState("1")
+  const [selected, setSelected] = useState("Default");
 
   let coindata = coins?.data?.coins;
 
@@ -20,7 +20,39 @@ const CryptoCard = ({ simplified }) => {
       item.name.toLowerCase().includes(search)
     );
     setCoinData(filteredData);
+    setSelected("Default")
   }, [coindata, search]);
+
+  useEffect(() => {
+    selected === "Default" && setCoinData(coindata);
+    selected === "Alphabatical A-Z" &&
+      setCoinData(
+        [...coindata].sort((a, b) =>
+          a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1
+        )
+      );
+
+    selected === "Alphabatical Z-A" &&
+      setCoinData(
+        [...coindata].sort((a, b) =>
+          a.name.toLowerCase() < b.name.toLowerCase() ? 1 : -1
+        )
+      );
+
+    selected === "Price L-H" &&
+      setCoinData(
+        [...coindata].sort((a, b) =>
+          parseFloat(a.price) > parseFloat(b.price) ? 1 : -1
+        )
+      );
+
+    selected === "Price H-L" &&
+      setCoinData(
+        [...coindata].sort((a, b) =>
+          parseFloat(a.price) < parseFloat(b.price) ? 1 : -1
+        )
+      );
+  }, [selected, coindata]);
 
   if (isFetching) return <Loader />;
 
@@ -28,7 +60,7 @@ const CryptoCard = ({ simplified }) => {
     <>
       {!simplified ? (
         <div className="crypto-search-container">
-					<Dropdown select={selected} setSelect={setSelected} />
+          <Dropdown select={selected} setSelect={setSelected} />
           <input
             className="crypto-search"
             type="text"
