@@ -1,30 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import CarouselSlider from "../common/CarouselSlider";
-import {
-  useGetCryptoDetailQuery,
-  useGetCryptoHistoryQuery,
-  useGetCryptoQuery,
-} from "../services/CryptoApi";
-import { useGetCryptoNewsQuery } from "../services/CryptoNewsApi";
 import CryptoCard from "./CryptoCard";
+import NewsCard from "./NewsCard";
 
 const HomePage = () => {
-  // let coinId = "Qwsogvtv82FCd";
-  // const { data: cryptoDetail } = useGetCryptoDetailQuery(coinId);
-  // console.log("cryptoDetail", cryptoDetail);
-
-  // let timePeriod = "7d";
-  // const { data: cryptoHistory } = useGetCryptoHistoryQuery({
-  //   coinId,
-  //   timePeriod,
-  // });
-  // console.log("cryptoHistory", cryptoHistory);
-
-  // let news = "Crypto";
-  // const { data: cryptoNews } = useGetCryptoNewsQuery({ news, count });
-  // console.log("cryptoNews", cryptoNews);
-
   return (
     <>
       <div className="carousel_container">
@@ -42,6 +22,19 @@ const HomePage = () => {
           </div>
         </div>
         <CryptoCard simplified={true} />
+      </div>
+
+      <div className="news_main">
+        <div className="d-flex-between">
+          <div>
+            <p className="news_header">Crypto News</p>
+            <p className="news_leads">Top News about Cryptocurrency</p>
+          </div>
+          <div className="see_more_btn">
+            <Link to="/news">See More</Link>
+          </div>
+        </div>
+        <NewsCard simplified={true} />
       </div>
     </>
   );

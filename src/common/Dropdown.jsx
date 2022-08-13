@@ -1,16 +1,8 @@
 import React, { useState } from "react";
 import { BsFillCaretDownFill } from "react-icons/bs";
 
-const Dropdown = ({ select, setSelect }) => {
+const Dropdown = ({ select, setSelect, dropdownOptions }) => {
   const [isActive, setIsActive] = useState(false);
-
-  const dropdownOptions = [
-    "Default",
-    "Alphabatical A-Z",
-    "Alphabatical Z-A",
-    "Price L-H",
-    "Price H-L",
-  ];
 
   return (
     <div

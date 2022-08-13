@@ -14,13 +14,21 @@ const CryptoCard = ({ simplified }) => {
 
   let coindata = coins?.data?.coins;
 
+  const dropdownOptions = [
+    "Default",
+    "Alphabatical A-Z",
+    "Alphabatical Z-A",
+    "Price L-H",
+    "Price H-L",
+  ];
+
   useEffect(() => {
     setCoinData(coindata);
     const filteredData = coindata?.filter((item) =>
       item.name.toLowerCase().includes(search)
     );
     setCoinData(filteredData);
-    setSelected("Default")
+    setSelected("Default");
   }, [coindata, search]);
 
   useEffect(() => {
@@ -60,7 +68,11 @@ const CryptoCard = ({ simplified }) => {
     <>
       {!simplified ? (
         <div className="crypto-search-container">
-          <Dropdown select={selected} setSelect={setSelected} />
+          <Dropdown
+            select={selected}
+            setSelect={setSelected}
+            dropdownOptions={dropdownOptions}
+          />
           <input
             className="crypto-search"
             type="text"
@@ -70,22 +82,24 @@ const CryptoCard = ({ simplified }) => {
         </div>
       ) : null}
       <div className="crypto_card_container">
-        {coinData?.map((e) => (
-          <Link key={e.rank} to={`/coins/${e.uuid}`}>
+        {coinData?.map((coin) => (
+          <Link key={coin.rank} to={`/coins/${coin.uuid}`}>
             <div
               style={
-                e.color === null || e.color === ""
+                coin.color === null || coin.color === ""
                   ? { "--color": "#001920" }
-                  : { "--color": e.color }
+                  : { "--color": coin.color }
               }
               className="crypto_card"
             >
               <div className="coin_image">
-                <img src={e.iconUrl} alt="ICON" />
+                <img src={coin.iconUrl} alt="ICON" />
               </div>
               <div className="crypto_card_details">
-                <div className="crypto_header">{e.name}</div>
-                <div className="crypto_price">Price - ${millify(e.price)}</div>
+                <div className="crypto_header">{coin.name}</div>
+                <div className="crypto_price">
+                  Price - ${millify(coin.price)}
+                </div>
               </div>
             </div>
           </Link>
