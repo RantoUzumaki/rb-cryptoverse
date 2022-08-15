@@ -1,4 +1,6 @@
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { WebsiteLoader } from "./common/Loader";
 import PageNotFound from "./common/PageNotFound";
 import Exchanges from "./components/Exchanges";
 import {
@@ -12,6 +14,7 @@ import {
 function App() {
   return (
     <div>
+      <WebsiteLoader />
       <Router>
         <NavBar />
         <div className="BodyContainer">

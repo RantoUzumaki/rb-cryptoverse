@@ -99,11 +99,11 @@ const CryptoDetails = () => {
         </div>
       </div>
 
-      {/* <LineChart
+      <LineChart
         coinHistory={coinHistory}
         currentPrice={millify(coinDetail.price)}
         coinName={coinDetail.name}
-      /> */}
+      />
 
       <div className="stats_container">
         <div className="coin_stats">
